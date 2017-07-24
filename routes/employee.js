@@ -1,12 +1,13 @@
 exports.get = function(req, res) {
     var data;
 
-    // Set data from MySQL instead of junk here
-    data = [
-        { name: 'John', age: '32' },
-        { name: 'Mayara', age: '21' },
-        { name: 'Susan', age: '37' }
-    ];
+    req.db.query('SELECT * from employees', function(err, rows, fields) {
+        if (!err) {
+            console.log('The solution is: ', rows);
+        } else {
+            console.log('Error while performing Query.');
+        }
+    });
 
     res.json({ data: data }).status(200);
 }

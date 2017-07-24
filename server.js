@@ -1,24 +1,28 @@
 #!/usr/bin/env node
 
-var port = 3000;
 var express = require('express');
 var session = require('express-session')
 var serveStatic = require('serve-static');
 var bodyParser = require('body-parser');
 var app = express();
 
-//app.use(express.static(__dirname + '/public'));
+// Load config file
+var config = require('./config.js');
+var port = config.port || 3000;
+
+app.use(express.static(__dirname + '/'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(session({ secret: 'top secret', resave: true, saveUninitialized: true }));
-
-//app.use(db.establish(config.db_config));
+// Create DB connection
+app.use(require('./middleware/db.js')(config));
 
 app.listen(port, function() {
     console.log('Server listening on port ' + port + '.');
 });
 
 function checkAuth(req, res, next) {
+	console.log('Checking auth...');
     if (!req.session.user_id) {
         res.status(403).send('You are not authorized to view this page');
     } else {
@@ -33,9 +37,5 @@ var employee = require('./routes/employee.js');
 
 app.post('/api/login', auth.login);
 app.get('/api/logout', auth.logout);
-app.get('/api/employees', checkAuth, employee.get);
-
-/*
-app.post('/api/users', users.post);
-app.get('/api/random', users.get);
-*/
+//app.get('/api/employees', checkAuth, employee.get);
+app.get('/api/employees', employee.get);

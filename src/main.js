@@ -1,4 +1,4 @@
-// 1. Define route components.
+/*// 1. Define route components.
 // These can be imported from other files
 //const Foo = { template: '<div>foo</div>' }
 
@@ -10,13 +10,6 @@ const employeesComp = {
 		    <div>a{{employees}}b</div> \
 		</div>'
 	//template: '<div> Todos os seus funcionarios vem aqui. </div>'
-/*-
-	template: '<div>AAA'
-			+ '  <div v-if="!employees || employees.length == 0">No employees =/</div>'
-			+ '  <div v-if="employees.length > 0">{{employees}}</div>'
-			+ '  <div v-if="true">{{employees}}</div>'
-			+ 'bb</div>'
-*/
 };
 
 // 2. Define some routes
@@ -53,7 +46,7 @@ router.beforeEach((to, from, next) => {
 // 4. Create and mount the root instance.
 // Make sure to inject the router with the router option to make the
 // whole app router-aware.
-var app = new Vue({
+/*var app = new Vue({
 	router,
 	http: {
 		root: '/'
@@ -94,4 +87,21 @@ var app = new Vue({
 			});
 		}
     }
+});
+*/
+
+import Vue from 'vue/dist/vue.js'
+import app from './components/App.vue'
+import VueResource from 'vue-resource/dist/vue-resource.js'
+import store from './vuex/store'
+
+Vue.use(VueResource);
+
+var App = new Vue({
+    store,
+	http: {
+		root: '/'
+	},
+    el: '#app',
+    components: { app }
 });
