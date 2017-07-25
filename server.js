@@ -22,8 +22,9 @@ app.listen(port, function() {
 });
 
 function checkAuth(req, res, next) {
-    console.log('Checking auth...');
-    if (!req.session.user_id) {
+	var token = req.body.token;
+
+    if (req.session.token != token) {
         res.status(403).send('You are not authorized to view this page');
     } else {
         res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
@@ -33,9 +34,9 @@ function checkAuth(req, res, next) {
 
 /* Routes */
 var auth = require('./routes/auth.js');
-var employee = require('./routes/employee.js');
+var employees = require('./routes/employees.js');
 
 app.post('/api/login', auth.login);
+app.post('/api/token', auth.checkToken);
 app.get('/api/logout', auth.logout);
-//app.get('/api/employees', checkAuth, employee.get);
-app.get('/api/employees', employee.get);
+app.post('/api/employees', checkAuth, employees.get);

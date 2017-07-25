@@ -1,17 +1,13 @@
 <template>
     <div>
-        <!--<login></login>-->
-        Funcionarios:
-        <employees :employees="employ"></employees>
+		<router-view></router-view>
     </div>
 </template>
 
 <script>
+import Login from './Login.vue'
 import Employees from './Employees.vue'
 
-// Import action to retrieve employees
-
-// Export main component
 export default {
     name: 'app',
     data: function() {
@@ -28,8 +24,8 @@ export default {
         }
     },
     components: {
+        Login,
         Employees
-        //, Login
     }
 }
 </script>

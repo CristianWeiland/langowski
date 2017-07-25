@@ -11,7 +11,6 @@ module.exports = function(config) {
 
     return function(req, res, next) {
         req.db = connection;
-        req.db.connect();
         next();
     }
 }

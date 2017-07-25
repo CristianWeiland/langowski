@@ -24,6 +24,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "body-parser": "^1.17.2",
     "bootstrap-vue": "^0.18.0",
+    "crypto": "0.0.3",
     "css-loader": "^0.28.4",
     "express": "^4.15.3",
     "express-session": "^1.15.4",
