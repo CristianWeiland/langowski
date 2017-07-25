@@ -40,3 +40,6 @@ app.post('/api/login', auth.login);
 app.post('/api/token', auth.checkToken);
 app.get('/api/logout', auth.logout);
 app.post('/api/employees', checkAuth, employees.get);
+
+// In case we want to create another user...
+//app.post('/api/create', auth.createUser);
