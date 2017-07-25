@@ -1,5 +1,5 @@
-import Vue from 'vue/dist/vue.js'
-import Vuex from 'vuex/dist/vuex.js'
+import Vue from 'vue/dist/vue.min.js'
+import Vuex from 'vuex/dist/vuex.min.js'
 
 Vue.use(Vuex)
 

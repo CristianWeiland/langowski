@@ -1,7 +1,7 @@
-import Vue from 'vue/dist/vue.js'
+import Vue from 'vue/dist/vue.min.js'
 import App from './components/App.vue';
-import VueRouter from 'vue-router/dist/vue-router.js';
-import VueResource from 'vue-resource/dist/vue-resource.js'
+import VueRouter from 'vue-router/dist/vue-router.min.js';
+import VueResource from 'vue-resource/dist/vue-resource.min.js'
 import store from './vuex/store.js'
 import { routes as AppRoutes } from './components/appRoutes.js';
 
@@ -11,6 +11,7 @@ Vue.use(VueResource);
 const routes = [
 	{
 		path: '/',
+        redirect: '/login',
 		component: App,
 		children: AppRoutes
 	}, {
