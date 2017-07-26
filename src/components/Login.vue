@@ -3,6 +3,7 @@
         <div align="center">
             <div class="login-form">
                 <div class="form-control">
+                    <h2>Langowski Exercise</h2>
 					<div v-if="loginError" class="alert alert-danger big-font">{{loginError}}</div>
                     <div style="margin-top: 15px" class="form-group big-font">Username: <input v-model="user"/></div>
                     <div class="form-group big-font">Password: <input type="password" v-model="pass"/></div>

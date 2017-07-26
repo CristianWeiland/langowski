@@ -1,6 +1,6 @@
 var config = module.exports = {};
 
-config.port = 3000;
+config.port = 8080;
 
 config.db_config = {
     user: 'langowski',
